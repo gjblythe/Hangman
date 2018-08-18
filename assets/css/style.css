@@ -1,0 +1,29 @@
+header {
+    font-family: 'Oswald', sans-serif;
+    font-size: 100px;
+    text-align: center;
+    border: 5px solid greenyellow;
+    padding: 30px;
+    margin: 15px;
+}
+
+#start {
+    font-family: 'Oswald', sans-serif;
+    font-size: 25px;
+    font-style: italic;
+    text-align: center;
+}
+
+body,h1 {
+    font-family: 'Oswald', sans-serif;
+    background-image: url(/assets/images/doodles/doodles.png)
+}
+
+#bandName {
+    text-align: center;
+    font-size: 25px;
+}
+
+.col-md-6 {
+    text-align: center;
+}
