@@ -20,26 +20,29 @@ var attemptsLeft = 8;
 var output = "";
 var userLetter = "";
 var chosen = [];
+console.log(answer);
 
 //setup function
+function reset() {
+  choice = Math.floor(Math.random() * game.length),
+    attemptsLeft = 8;
+    chosen = [];
+};
+
 var setup = function() {
   for (var i = 0; i < answer.length; i++) {
     display[i] = "- ";
     output = output + display[i];
   }
+
   document.getElementById("bandName").innerHTML = output;
   output = "";
-  console.log(answer);
 };
 
-function reset() {
-  choice = Math.floor(Math.random() * game.length);
-  attemptsLeft = 8;
-  chosen = [];
-}
+
 //on window
 window.onload = function() {
-  setup();
+  setup(), reset();
 };
 
 document.onkeyup = function(event) {
@@ -50,37 +53,40 @@ document.onkeyup = function(event) {
 
   console.log(userLetter);
   console.log(attemptsLeft);
+  
 
-  var onKey = function() {
+   {
     output = "";
-    userLetter = $("letter").value;
-    $("letter").value = "";
+    userLetter = letters.value;
+    letters.value = "";
+    
 
     for (var c = 0; c < answer.length; c++) {
-      console.log(letters[c]);
-      if (userLetter.toLowerCase() === letters[c]) {
-        display[c] = userLetter.toLowerCase();
+      
+      if (userLetter === letters[c]) {
+        display[c] = userLetter
         win--;
       }
+    
+    output = output + display[c];
     }
-    output = output + display[c] + " ";
-  };
+  }
   document.getElementById("bandName").innerHTML = output;
-  output = "";
+  output = " ";
 
   //logic
   if (win < 1) {
-    winCounter++;
-    document.getElementById("wins").innerHTML = winCounter;
-    reset();
-    setup();
+    winCounter++,
+      (document.getElementById("wins").innerHTML = winCounter),
+      reset(),
+      setup();
   }
 
   if (attemptsLeft === 0) {
-    loss++;
-    document.getElementById("loss").innerHTML = loss;
-    reset();
-    setup();
+    loss++,
+      (document.getElementById("loss").innerHTML = loss),
+      reset(),
+      setup();
   } else {
     document.getElementById("guessRemain").innerHTML = attemptsLeft;
   }
