@@ -19,9 +19,7 @@ var letters = answer.split("");
 var attemptsLeft = 8;
 var output = "";
 var userLetter = "";
-var chosen = []
-
-
+var chosen = [];
 
 //setup function
 var setup = function() {
@@ -34,73 +32,56 @@ var setup = function() {
   console.log(answer);
 };
 
-function reset()
-{
-    choice = Math.floor(Math.random() * game.length);
-    attemptsLeft = 8
-    chosen = []
+function reset() {
+  choice = Math.floor(Math.random() * game.length);
+  attemptsLeft = 8;
+  chosen = [];
 }
 //on window
 window.onload = function() {
   setup();
-  
 };
 
 document.onkeyup = function(event) {
   userLetter = event.key;
-  attemptsLeft --;
+  attemptsLeft--;
   chosen.push(userLetter);
-  document.getElementById('bogusGuess').innerHTML = chosen;
+  document.getElementById("bogusGuess").innerHTML = chosen;
 
   console.log(userLetter);
-  console.log(attemptsLeft)
+  console.log(attemptsLeft);
 
-
-    var onKey = function() 
-    {
-
-  output = "";
-  userLetter = $("letter").value;
-  $("letter").value = "";
-
-  for (var c = 0; c < answer.length; c++) 
-  {
-      console.log(letters[c]);
-    if (userLetter.toLowerCase() === letters[c]) 
-    {
-      display[c] = userLetter.toLowerCase();
-      win--;
-    }
-    
-  }
-  output = output + display[c] + " ";
-    }
-    document.getElementById("bandName").innerHTML = output;
+  var onKey = function() {
     output = "";
+    userLetter = $("letter").value;
+    $("letter").value = "";
 
-
-    //logic
-    if (win < 1)
-    {
-        winCounter ++;
-        document.getElementById('wins').innerHTML = winCounter;
-        reset();
-        setup();
+    for (var c = 0; c < answer.length; c++) {
+      console.log(letters[c]);
+      if (userLetter.toLowerCase() === letters[c]) {
+        display[c] = userLetter.toLowerCase();
+        win--;
+      }
     }
+    output = output + display[c] + " ";
+  };
+  document.getElementById("bandName").innerHTML = output;
+  output = "";
 
-    if (attemptsLeft === 0)
-    {
-        loss ++;
-        document.getElementById('loss').innerHTML = loss;
-        reset();
-        setup();
-         
-        
-    }
+  //logic
+  if (win < 1) {
+    winCounter++;
+    document.getElementById("wins").innerHTML = winCounter;
+    reset();
+    setup();
+  }
 
-    else 
-    {
-        document.getElementById('guessRemain').innerHTML = attemptsLeft;
-    }
-
-};   
+  if (attemptsLeft === 0) {
+    loss++;
+    document.getElementById("loss").innerHTML = loss;
+    reset();
+    setup();
+  } else {
+    document.getElementById("guessRemain").innerHTML = attemptsLeft;
+  }
+};
