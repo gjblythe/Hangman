@@ -17,7 +17,7 @@ header {
 body,
 h1 {
   font-family: "Oswald", sans-serif;
-  background-image: url(/assets/images/doodles/doodles.png);
+  background-image: url(assets/images/doodles/doodles.png);
 }
 
 #bandName {
